@@ -99,4 +99,17 @@ public class FileWordCounter {
             return Collections.emptyList();
         }
     }
+    public List<String> filterWordAndLength(String fileName, Integer sizeOverride) {
+        readPoetry(fileName);
+        try{
+            return this.words.stream()
+                    .filter(wrd -> wrd.length() == sizeOverride)
+                    .collect(Collectors.toList());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
 }
