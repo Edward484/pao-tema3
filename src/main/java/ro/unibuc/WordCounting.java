@@ -17,6 +17,7 @@ public class WordCounting {
 
         List<String> str1 = fileWordCounter.getSizeOne("poezie1");
         List<String> str2 = fileWordCounter.getSizeLessThan3("poezie1");
+        List<String> str3 = fileWordCounter.countWordAppearances("poezie2", "Captain");
         int d = 3;
         //TODO: add code here to read from console and get the length limit
 

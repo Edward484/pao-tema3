@@ -61,6 +61,7 @@ public class FileWordCounter {
                         .filter(word -> word.length() < sizeOverride)
                         .collect(Collectors.toList());
             }
+
         }
         catch (Exception e){
             e.printStackTrace();
@@ -80,7 +81,22 @@ public class FileWordCounter {
     }
 
     public List<String> countWordAppearances(String fileName, String word) {
-        //TODO: add code here
-        return Collections.emptyList();
+        readPoetry(fileName);
+        try{
+            return this.words.stream()
+                    .filter(wrd -> {
+                        final int index = wrd.indexOf('!');
+                        String wrdTrimmed = wrd;
+                        if(index > 0) {
+                            wrdTrimmed = wrd.substring(0, index);
+                        }
+                        return wrdTrimmed.equals(word);
+                    })
+                    .collect(Collectors.toList());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 }
